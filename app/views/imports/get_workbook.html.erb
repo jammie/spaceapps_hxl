@@ -1,0 +1,15 @@
+<%= hidden_field_tag "project-name", @project.name %>
+<div>
+  <%= link_to "Export to HXL", "#", :id => "export-hxl" %>
+</div>
+<br/>
+<table>
+  <% @sheet.each_with_index do |row,row_index|  %>
+    <tr id="row_<%= row_index  %>" class="<%= cycle("odd", "even") -%>">
+      <td><%= check_box_tag "check_list_#{row_index}" if row_index > 0 %></td>
+      <% row.each_with_index do |val, column_index| %>
+        <td id="row_<%= row_index  %>_column_<%= column_index %>"><%= val.is_a?(Spreadsheet::Formula) ? val.value : val  %></td>
+      <%end%>
+    </tr>  
+  <%end%>
+  <table>

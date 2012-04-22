@@ -1,0 +1,21 @@
+<script>
+  $("document").ready(function(){
+    $.get("/export/excel_parsing",{"project_id": $(this).attr("id")}, function(respond){
+      console.dir(respond);
+    });
+  });
+</script>
+<h1>Project Exporter</h1>
+
+<div><%= @project.name %></div>
+
+<br/>
+
+<div>Files:</div>
+<% if @project.assets.present? %>
+  <div>
+    <% @project.assets.each_with_index do |asset, index| %>
+      <%= index + 1%>. <%= link_to "#{asset.data.original_filename}", "#", :id => asset.id %>
+    <%end%>
+  </div>
+<% end %>

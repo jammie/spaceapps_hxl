@@ -1,0 +1,12 @@
+<div>
+  <div>    
+    <h3><span><%= @project.name %> </span> :: Worksheets</h3>
+    <%= hidden_field_tag "project-name", @project.name %>
+    <% @book.worksheets.each_with_index do |sheet, workbook_index| %>
+      <ul>
+        <li> <%= link_to sheet.name, "#worksheet_frame", :onclick=>"$('#worksheet_frame').attr('src', '#{get_workbook_imports_path({:asset_id => @asset.id, :workbook_index => workbook_index })}' )" %> </li>
+      </ul>
+    <%end%>
+  </div>
+  <iframe id="worksheet_frame" src=""/>
+</div>

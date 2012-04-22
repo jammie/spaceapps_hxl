@@ -1,0 +1,10 @@
+<div>
+  <%= form_tag('/imports/parsed_excel', :multipart => true) do -%>
+    <div>
+      <%= label_tag "Excel File" %><br/>
+      <%= file_field_tag :data %>
+    </div>
+    <br/> 
+    <div><%= submit_tag 'Upload' %></div>
+  <% end -%>
+</div>
